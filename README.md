@@ -1,29 +1,21 @@
-# truffle-init-webpack
-Example webpack project with Truffle. Includes contracts, migrations, tests, user interface and webpack build pipeline.
+# FriendsBethereum
+This project is an Ethereum smart contract for making bets with friends.
 
-## Usage
+## Install Intructions
 
-To initialize a project with this example, run `truffle init webpack` inside an empty directory.
+Prerequisites : Have `npm` installed on your computer. For more information, please visit [npm] (https://www.npmjs.com/)
+
+1. Clone this project from GitHub
+2. Open the repository in terminal then run `npm install`
 
 ## Building and the frontend
 
-1. First run `truffle compile`, then run `truffle migrate` to deploy the contracts onto your network of choice (default "development").
-1. Then run `npm run dev` to build the app and serve it on http://localhost:8080
+1. First run the command `testrpc` in your terminal.
+2. In your repository,  run `truffle compile`, then run `truffle migrate` to deploy the contracts onto your network of choice (default "development").
+3. Then run `npm run dev` to build the app and serve it on http://localhost:8080
 
-## Possible upgrades
+## Contributors
 
-* Use the webpack hotloader to sense when contracts or javascript have been recompiled and rebuild the application. Contributions welcome!
-
-## Common Errors
-
-* **Error: Can't resolve '../build/contracts/MetaCoin.json'**
-
-This means you haven't compiled or migrated your contracts yet. Run `truffle compile` and `truffle migrate` first.
-
-Full error:
-
-```
-ERROR in ./app/main.js
-Module not found: Error: Can't resolve '../build/contracts/MetaCoin.json' in '/Users/tim/Documents/workspace/Consensys/test3/app'
- @ ./app/main.js 11:16-59
-```
+Julien Aflalo
+Charles-Elie Aubadiat
+Aurelien Barthe-Laperygne
