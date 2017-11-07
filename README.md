@@ -3,7 +3,7 @@ This project is an Ethereum smart contract for making bets with friends.
 
 ## Install Intructions
 
-Prerequisites : Have `npm` installed on your computer. For more information, please visit [npm] (https://www.npmjs.com/)
+Prerequisites : Have `npm` installed on your computer. For more information, please visit [npm](https://www.npmjs.com/)
 
 1. Clone this project from GitHub
 2. Open the repository in terminal then run `npm install`
