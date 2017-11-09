@@ -45,7 +45,7 @@ contract Bethereum{
         _endTimeBet = endTimeBet;
         _endMatch = endMatch;
         _creator = msg.sender;
-        _balance = 0
+        _balance = 0;
         numberOfBetForTeam[3] = 0; //if bet on draw
         numberOfBetForTeam[1] = 0;
         numberOfBetForTeam[2] = 0;
