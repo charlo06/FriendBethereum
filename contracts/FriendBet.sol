@@ -40,7 +40,11 @@ contract FriendBet{
     }
 
 
+<<<<<<< HEAD
     function createBet(uint valueBet, uint endMatch, uint endTimeBet, uint team) public {
+=======
+    function FriendBet(uint valueBet, uint endMatch, uint endTimeBet, uint team) public {
+>>>>>>> eb49909ad4d8ee16811d2071ed5ab88fda88f3d3
         _valueBet = valueBet;
         _endTimeBet = endTimeBet;
         _endMatch = endMatch;
