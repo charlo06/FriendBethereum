@@ -1,6 +1,6 @@
 pragma solidity ^0.4.2;
 
-contract Bethereum{
+contract FriendBet{
     address _creator;
     uint public _valueBet;
     uint _endTimeBet;
@@ -40,7 +40,7 @@ contract Bethereum{
     }
 
 
-    function Bethereum(uint valueBet, uint endMatch, uint endTimeBet, uint team) public {
+    function FriendBet(uint valueBet, uint endMatch, uint endTimeBet, uint team) public {
         _valueBet = valueBet;
         _endTimeBet = endTimeBet;
         _endMatch = endMatch;
