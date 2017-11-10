@@ -2,15 +2,12 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-label {
-  /*display: inline-block;*/
-  /*width: 100px;*/
+nav span, nav li{
+  cursor: pointer;
 }
 
 input[type="text"], input[type="number"], input[type="date"], input[type="time"]{
   width: 100%;
-  /*padding: 5px;
-  font-size: 16px;*/
 }
 
 button {
@@ -41,11 +38,14 @@ h3 {
 }
 
 #createBet{
-  display:none;
+  display:block;
 }
 #joinBet{
   display: none;
 }
 #results{
   display: none;
+}
+#oracle{
+  display:none;
 }

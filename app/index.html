@@ -9,7 +9,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">FriensBethereum</a>
+  <span class="navbar-brand" onclick="App.displayIndex()">FriensBethereum</span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -17,6 +17,9 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item nav-link" onclick="App.displayIndex()">
         Home
+      </li>
+      <li class="nav-item nav-link" onclick="App.displayCreateBet()">
+        Create Bet
       </li>
       <li class="nav-item nav-link" onclick="App.displayJoinBet()">
         Join Bet
@@ -27,24 +30,6 @@
     </ul>
   </div>
 </nav>
-<div class="container" id="index">
-  <div class="row text-center">
-    <div class="col-12">
-      <h1 class="center">FriendsBethereum - Home</h1>
-    </div>
-  </div>
-  <div class="row text-center">
-    <div class="col-4">
-      <button onclick="App.displayCreateBet()">Create Bet</button>
-    </div>
-    <div class="col-4">
-      <button onclick="App.displayJoinBet()">Join Bet</button>
-    </div>
-    <div class="col-4">
-      <button onclick="App.displayResults()">Bet results</button>
-    </div>
-  </div>
-</div>
 <div class="container" id="createBet">
   <div class="row text-center">
     <div class="col-12">
@@ -53,37 +38,19 @@
   </div>
   <form>
     <div class="row text-center">
-      <div class="col-6">
+      <div class="col-12">
         <label for="price">Bet Price (ETH)</label>
         <input type="number" id="price" required placeholder="0,5"></input>  <br>
       </div>
-      <div class="col-6">
-        <label for="ownerAddress">Owner address</label>
-        <input type="text" id="address" required  placeholder="0x..."></input>  <br>
-      </div>
     </div>
     <div class="row text-center">
-      <div class="col-5">
+      <div class="col-6">
         <label for="team1">Team 1</label>
         <input required type="text" id="team1" placeholder="PSG"></input>  <br>
       </div>
-      <div class="col-2">
-        Draw
-      </div>
-      <div class="col-5">
+      <div class="col-6">
         <label for="team2" >Team 2</label>
         <input required type="text" id="team2" placeholder="Guingamp"></input>  <br>
-      </div>
-    </div>
-    <div class="row text-center">
-      <div class="col-5">
-        <input type="radio" value="team1Win" id="team1Winner" name="teamWinner" required/>  <br>
-      </div>
-      <div class="col-2">
-        <input required type="radio" value="draw" id="drawWinning" name="teamWinner"/>  <br>
-      </div>
-      <div class="col-5">
-        <input type="radio" value="team2Win" id="team2Winner"  name="teamWinner"/>  <br>
       </div>
     </div>
     <div class="row text-center">
@@ -106,7 +73,7 @@
     </div>
     <div class="row text-center">
       <div class="col-12">
-        <button id="create" onclick="App.displayIndex(); App.createBet();" type="submit" class="text-center">Create Bet</button>
+        <button id="create" onclick="App.displayJoinBet(); App.createBet();" type="submit" class="text-center">Create Bet</button>
       </div>
     </div>
   </form>
@@ -117,20 +84,96 @@
       <h1>FriendsBethereum - Results</h1>
     </div>
   </div>
+  <div class="row text-center">
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Team</th>
+            <th>Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>PSG</td>
+            <td>75%</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Draw</td>
+            <td>10%</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Guingamp</td>
+            <td>15%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-12">
+      Total bet ammount : <strong>3 ETH</strong>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-12">
+      <button onclick="App.displayOracle()">Oracle</button>
+    </div>
+  </div>
 </div>
 <div class="container" id="joinBet">
   <div class="row text-center">
     <div class="col-12">
-      <h1>FriendsBethereum - Join Bet</h1>
+      <h1>FriendsBethereum - Place Bet</h1>
     </div>
   </div>
   <div class="row text-center">
-    <div class="col-10">
-      <label for="betAdress">Bet address</label>
-      <input type="text" id="betAddress" required  placeholder="0x..."></input>
+    <div class="col-5">
+      <label for="team1Winner">PSG</label><br />
+      <input type="radio" value="team1Win" id="team1Winner" name="teamWinner" required/>  <br>
     </div>
     <div class="col-2">
-      <button>Join Bet</button>
+      <label for="draw">Draw</label><br />
+      <input required type="radio" value="draw" id="drawWinning" name="teamWinner"/>  <br>
+    </div>
+    <div class="col-5">
+      <label for="team2Winner">Guingamp</label><br />
+      <input type="radio" value="team2Win" id="team2Winner"  name="teamWinner"/>  <br>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-12">
+      <button onclick="App.displayResults()">Place Bet</button>
+    </div>
+  </div>
+</div>
+<div class="container" id="oracle">
+  <div class="row text-center">
+    <div class="col-12">
+      <h1>Choose the winner</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-5">
+      <label for="team1Winner">PSG</label><br />
+      <input type="radio" value="team1Win" id="team1Winner" name="teamWinner" required/>  <br>
+    </div>
+    <div class="col-2">
+      <label for="draw">Draw</label><br />
+      <input required type="radio" value="draw" id="drawWinning" name="teamWinner"/>  <br>
+    </div>
+    <div class="col-5">
+      <label for="team2Winner">Guingamp</label><br />
+      <input type="radio" value="team2Win" id="team2Winner"  name="teamWinner"/>  <br>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-12">
+      <button onclick="#">OK</button>
     </div>
   </div>
 </div>
