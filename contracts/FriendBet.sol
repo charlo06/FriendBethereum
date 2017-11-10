@@ -8,6 +8,7 @@ contract FriendBet{
     uint _balance;
     uint _winner;
     uint _prizeBet;
+    uint _betCreated;
 
     mapping(address=>uint) public playerChoice;
     mapping(uint => uint) public numberOfBetForTeam;
@@ -21,6 +22,16 @@ contract FriendBet{
         _;
     }
 
+    modifier iswinner() {
+        if(playerChoice[msg.sender] != _winner) return;
+        _;
+    }
+
+
+    modifier BetIsCreated() {
+        if(_betCreated ==  1 ) return;
+        _;
+    }
     modifier notPlayedYet(){
       if(playerChoice[msg.sender] != 0) return;
       _;
@@ -48,29 +59,28 @@ contract FriendBet{
         numberOfBetForTeam[2] = 0;
         _winner = 0;
         _prizeBet = 0;
+        _betCreated = 0;
     }
 
-    function createBet( uint valueBet, uint endMatch, uint endTimeBet){
+    function createBet( uint valueBet, uint endMatch, uint endTimeBet) BetIsCreated(){
               _creator = msg.sender;
               _valueBet = valueBet;
               _endMatch = endMatch;
               _endTimeBet = endTimeBet;
+              _betCreated = 1;
     }
 
-    function betTeam(uint team) notPlayedYet() {
+    function betTeam(uint team) notPlayedYet(){
         playerChoice[msg.sender] = team;
         _balance += _valueBet;
         numberOfBetForTeam[team] += 1;
-    }
-    function getNumberOFBetForTeam(uint team) public constant returns(uint){
-      return(numberOfBetForTeam[team]);
     }
 
     function getwinnerBet(uint winner) isOwner()  endOfMatch(){
       _winner = winner;
       _prizeBet = _valueBet*(numberOfBetForTeam[3]+ numberOfBetForTeam[1]+ numberOfBetForTeam [2])/ numberOfBetForTeam[winner];
     }
-    function getmoneybet()  endOfMatch(){
+    function getmoneybet()  endOfMatch() iswinner(){
       playerChoice[msg.sender] = 3; //avoid withdraw more than once
       msg.sender.transfer(_prizeBet);
     }

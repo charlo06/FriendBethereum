@@ -51,7 +51,6 @@ window.App = {
     var endTimeBet = Date.now()/1000 + 30;
     var team = 1;
 
-    (valueBet,endMatch,endTimeBet,team);
     console.log("ta mere sans slip");
 
     //web3.eth.getAccounts(function(error, accounts){
@@ -69,6 +68,46 @@ window.App = {
       console.log(err.message);
     });
   //});
+  },
+
+  CheckNumberBet: function(team){
+
+
+    console.log("check si le joueur à deja fait un paris")    // TO DO
+    FriendBet.deployed().then(function(instance){
+      CreateBetInstance = instance;
+      return FriendBet.numberOfBetForTeam[team].call(function(err,res){
+        if(res != 0){
+          console.log("paris déja effectué pour l'équipe " + res);
+        }
+        else{
+          console/log("aucun paris pour la team " +team);
+        }
+      });
+    }).catch(function(err){
+      console.log(err.message);
+    });
+  },
+
+  MakeBet: function() { //function to make the bet on the smart contract
+
+    console.log("debut du paris");
+    var team = 1;
+
+    var CreateBetInstance;
+
+
+    console.log("paris pour la team " + team);
+
+    FriendBet.deployed().then(function(instance){
+      CreateBetInstance = instance;
+
+      return CreateBetInstance.betTeam(team, {from: account});
+    }).then(function(result){
+      return console.log("paris réussie");
+    }).catch(function(err){
+      console.log(err.message);
+    });
   },
 
   setStatus: function(message) {
