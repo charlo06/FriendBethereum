@@ -20,7 +20,6 @@ h1, h2 {
   vertical-align: middle;
   margin-top: 0px;
   margin-bottom: 10px;
-  background-image: url(../public/bg.jpg);
 }
 
 h2 {
@@ -39,11 +38,14 @@ h3 {
 }
 
 #createBet{
-  display:none;
+  display:block;
 }
 #joinBet{
   display: none;
 }
 #results{
   display: none;
+}
+#oracle{
+  display:none;
 }

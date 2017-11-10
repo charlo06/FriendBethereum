@@ -137,28 +137,31 @@ window.App = {
   },
   displayCreateBet: function(){
     document.getElementById("createBet").style.display = "block";
-    document.getElementById("index").style.display = "none";
     document.getElementById("joinBet").style.display = "none";
     document.getElementById("results").style.display = "none";
-  },
-  displayIndex: function(){
-    document.getElementById("createBet").style.display = "none";
-    document.getElementById("index").style.display = "block";
-    document.getElementById("joinBet").style.display = "none";
-    document.getElementById("results").style.display = "none";
+    document.getElementById("oracle").style.display = "none";
+
   },
   displayJoinBet: function(){
     document.getElementById("createBet").style.display = "none";
-    document.getElementById("index").style.display = "none";
     document.getElementById("joinBet").style.display = "block";
     document.getElementById("results").style.display = "none";
+    document.getElementById("oracle").style.display = "none";
   },
   displayResults: function(){
     document.getElementById("createBet").style.display = "none";
-    document.getElementById("index").style.display = "none";
     document.getElementById("joinBet").style.display = "none";
     document.getElementById("results").style.display = "block";
+    document.getElementById("oracle").style.display = "none";
+
   },
+  displayOracle: function(){
+    document.getElementById("createBet").style.display = "none";
+    document.getElementById("joinBet").style.display = "none";
+    document.getElementById("results").style.display = "none";
+    document.getElementById("oracle").style.display = "block";
+
+  }
 
 };
 
