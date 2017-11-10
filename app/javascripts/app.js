@@ -44,21 +44,41 @@ window.App = {
 
   createBet: function() {
 
-    console.log("ta mere en slip de geurre");
-
     var CreateBetInstance;
-    var valueBet = 10;
-    var endMatch = Date.now()/1000 + 60;
-    var endTimeBet = Date.now()/1000 + 30;
-    var team = 1;
+    var valueBet = document.getElementById('price').value;
 
-    console.log("ta mere sans slip");
+    console.log('valueBet : ' +valueBet);
+    var endMatch;
+    var endTimeBet;
+    var team;
 
-    //web3.eth.getAccounts(function(error, accounts){
-      //if(error){
-      //  console.log(error);
-      //}
+    var radios = document.getElementsByName('teamWinner');
 
+    for (var i = 0, length = radios.length; i < length; i++)
+    {
+     if (radios[i].checked)
+     {
+      // do whatever you want with the checked radio
+      team=i+1;
+
+      // only one radio can be logically checked, don't check the rest
+      break;
+     }
+    }
+
+    var date = document.getElementById("finDuPari").value;
+    var time = document.getElementById("finTime").value;
+    var dateJs = new Date(date + " " + time);
+    console.log('date end time bet : ' + dateJs);
+    endTimeBet= Math.floor(new Date(dateJs).getTime() / 1000);
+    console.log('date end time bet : ' + endTimeBet);
+
+    var date2 = document.getElementById("resultatDuPari").value;
+    var time2 = document.getElementById("resultTime").value;
+    var dateJs2 = new Date(date2 + " " + time2);
+    console.log('date end time bet : ' + dateJs2);
+    endMatch= Math.floor(new Date(dateJs2).getTime() / 1000);
+    console.log('date end time bet : ' + endMatch);
     FriendBet.deployed().then(function(instance){
       CreateBetInstance = instance;
 

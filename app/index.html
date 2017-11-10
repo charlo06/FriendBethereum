@@ -35,7 +35,7 @@
   </div>
   <div class="row text-center">
     <div class="col-4">
-      <button onclick="App.createBet(); App.displayCreateBet()">Create Bet</button>
+      <button onclick="App.displayCreateBet()">Create Bet</button>
     </div>
     <div class="col-4">
       <button onclick="App.displayJoinBet()">Join Bet</button>
@@ -77,13 +77,13 @@
     </div>
     <div class="row text-center">
       <div class="col-5">
-        <input type="radio" value="team1Win" name="teamWinner" required/>  <br>
+        <input type="radio" value="team1Win" id="team1Winner" name="teamWinner" required/>  <br>
       </div>
       <div class="col-2">
-        <input required type="radio" value="draw" name="teamWinner"/>  <br>
+        <input required type="radio" value="draw" id="drawWinning" name="teamWinner"/>  <br>
       </div>
       <div class="col-5">
-        <input type="radio" value="team2Win" name="teamWinner"/>  <br>
+        <input type="radio" value="team2Win" id="team2Winner"  name="teamWinner"/>  <br>
       </div>
     </div>
     <div class="row text-center">
@@ -106,7 +106,7 @@
     </div>
     <div class="row text-center">
       <div class="col-12">
-        <button id="create" onclick="App.displayIndex()" type="submit" class="text-center">Create Bet</button>
+        <button id="create" onclick="App.displayIndex(); App.createBet();" type="submit" class="text-center">Create Bet</button>
       </div>
     </div>
   </form>
