@@ -18,4 +18,4 @@ Prerequisites : Have `npm` installed on your computer. For more information, ple
 
 Julien Aflalo
 Charlélie Obadia
-Aurelien Barthe-Laperygne
+Aurelien Barthe-Lapeyrigne
