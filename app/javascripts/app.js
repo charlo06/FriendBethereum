@@ -45,13 +45,13 @@ window.App = {
   createBet: function() {
 
     console.log("ta mere en slip de geurre");
+
     var CreateBetInstance;
     var valueBet = 10;
     var endMatch = Date.now()/1000 + 60;
     var endTimeBet = Date.now()/1000 + 30;
     var team = 1;
 
-    (valueBet,endMatch,endTimeBet,team);
     console.log("ta mere sans slip");
 
     //web3.eth.getAccounts(function(error, accounts){
@@ -74,7 +74,32 @@ window.App = {
   setStatus: function(message) {
     var status = document.getElementById("status");
     status.innerHTML = message;
-  }
+  },
+  displayCreateBet: function(){
+    document.getElementById("createBet").style.display = "block";
+    document.getElementById("index").style.display = "none";
+    document.getElementById("joinBet").style.display = "none";
+    document.getElementById("results").style.display = "none";
+  },
+  displayIndex: function(){
+    document.getElementById("createBet").style.display = "none";
+    document.getElementById("index").style.display = "block";
+    document.getElementById("joinBet").style.display = "none";
+    document.getElementById("results").style.display = "none";
+  },
+  displayJoinBet: function(){
+    document.getElementById("createBet").style.display = "none";
+    document.getElementById("index").style.display = "none";
+    document.getElementById("joinBet").style.display = "block";
+    document.getElementById("results").style.display = "none";
+  },
+  displayResults: function(){
+    document.getElementById("createBet").style.display = "none";
+    document.getElementById("index").style.display = "none";
+    document.getElementById("joinBet").style.display = "none";
+    document.getElementById("results").style.display = "block";
+  },
+
 };
 
 window.addEventListener('load', function() {

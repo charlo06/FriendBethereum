@@ -39,3 +39,13 @@ h3 {
 .row {
   margin: 25px 0;
 }
+
+#createBet{
+  display:none;
+}
+#joinBet{
+  display: none;
+}
+#results{
+  display: none;
+}
