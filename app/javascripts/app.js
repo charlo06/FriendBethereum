@@ -17,12 +17,6 @@ window.FriendBet = FriendBet;
 // For application bootstrapping, check out window.addEventListener below.
 var accounts;
 var account;
-var endMatch;
-var endTimeBet;
-var team;
-var valueBet;
-var team1Name;
-var team2Name;
 
 window.App = {
   start: function() {
@@ -46,21 +40,32 @@ window.App = {
       accounts = accs;
       account = accounts[0];
     });
-
   },
 
   createBet: function() {
 
     var CreateBetInstance;
-    valueBet = document.getElementById('price').value;
+    var valueBet = document.getElementById('price').value;
 
     console.log('valueBet : ' +valueBet);
+    var endMatch;
+    var endTimeBet;
+    var team;
 
+    var radios = document.getElementsByName('teamWinner');
 
+    for (var i = 0, length = radios.length; i < length; i++)
+    {
+     if (radios[i].checked)
+     {
+      // do whatever you want with the checked radio
+      team=i+1;
 
-    var team1Name = document.getElementById('team1').value;
-    var team2Name = document.getElementById('team2').value;
-    console.log('1 : '+team1Name+'2 : '+team2Name);
+      // only one radio can be logically checked, don't check the rest
+      break;
+     }
+    }
+
     var date = document.getElementById("finDuPari").value;
     var time = document.getElementById("finTime").value;
     var dateJs = new Date(date + " " + time);
@@ -77,16 +82,38 @@ window.App = {
     FriendBet.deployed().then(function(instance){
       CreateBetInstance = instance;
 
-      return CreateBetInstance.createBet(valueBet,endMatch,endTimeBet, {from: account});
+      return CreateBetInstance.createBet(valueBet,endMatch,endTimeBet, {from: account, value: valueBet});
     }).then(function(result){
       return console.log("esseye test 1 2");
     }).catch(function(err){
       console.log(err.message);
     });
-    document.getElementById('team1placeholder').innerHTML=team1Name;
-    document.getElementById('team2placeholder').innerHTML=team2Name;
-  //});
   },
+
+  MakeBet: function() { //function to make the bet on the smart contract
+
+    console.log("debut du paris");
+    var team = 1;
+
+    var CreateBetInstance;
+
+
+    console.log("paris pour la team " + team);
+
+    FriendBet.deployed().then(function(instance){
+      CreateBetInstance = instance;
+
+      return CreateBetInstance.betTeam(team, {from: account});
+    }).then(function(result){
+      return console.log("paris réussie");
+    }).catch(function(err){
+      console.log(err.message);
+    });
+  },
+
+  SayWinner: function(){
+
+  }
 
   CheckNumberBet: function(team){
 
@@ -107,67 +134,34 @@ window.App = {
     });
   },
 
-  MakeBet: function() { //function to make the bet on the smart contract
-
-    console.log("debut du paris");
-    document.getElementById('team1placeholder').innerHTML="A"+team1Name;
-    document.getElementById('team2placeholder').innerHTML="a afa"+team2Name;
-    var CreateBetInstance;
-    var radios = document.getElementsByName('teamWinner');
-    for (var i = 0, length = radios.length; i < length; i++)
-    {
-     if (radios[i].checked)
-     {
-      // do whatever you want with the checked radio
-      team=i+1;
-
-      // only one radio can be logically checked, don't check the rest
-     }
-    }
-
-    console.log("paris pour la team " + team);
-    FriendBet.deployed().then(function(instance){
-      CreateBetInstance = instance;
-
-      return CreateBetInstance.betTeam(team, {from: account});
-    }).then(function(result){
-      return console.log("paris réussie");
-    }).catch(function(err){
-      console.log(err.message);
-    });
-  },
-
   setStatus: function(message) {
     var status = document.getElementById("status");
     status.innerHTML = message;
   },
   displayCreateBet: function(){
     document.getElementById("createBet").style.display = "block";
+    document.getElementById("index").style.display = "none";
     document.getElementById("joinBet").style.display = "none";
     document.getElementById("results").style.display = "none";
-    document.getElementById("oracle").style.display = "none";
-
+  },
+  displayIndex: function(){
+    document.getElementById("createBet").style.display = "none";
+    document.getElementById("index").style.display = "block";
+    document.getElementById("joinBet").style.display = "none";
+    document.getElementById("results").style.display = "none";
   },
   displayJoinBet: function(){
     document.getElementById("createBet").style.display = "none";
+    document.getElementById("index").style.display = "none";
     document.getElementById("joinBet").style.display = "block";
     document.getElementById("results").style.display = "none";
-    document.getElementById("oracle").style.display = "none";
   },
   displayResults: function(){
     document.getElementById("createBet").style.display = "none";
+    document.getElementById("index").style.display = "none";
     document.getElementById("joinBet").style.display = "none";
     document.getElementById("results").style.display = "block";
-    document.getElementById("oracle").style.display = "none";
-
   },
-  displayOracle: function(){
-    document.getElementById("createBet").style.display = "none";
-    document.getElementById("joinBet").style.display = "none";
-    document.getElementById("results").style.display = "none";
-    document.getElementById("oracle").style.display = "block";
-
-  }
 
 };
 
