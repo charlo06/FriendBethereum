@@ -60,6 +60,7 @@ window.App = {
 
     var team1Name = document.getElementById('team1').value;
     var team2Name = document.getElementById('team2').value;
+    console.log('1 : '+team1Name+'2 : '+team2Name);
     var date = document.getElementById("finDuPari").value;
     var time = document.getElementById("finTime").value;
     var dateJs = new Date(date + " " + time);
@@ -82,6 +83,8 @@ window.App = {
     }).catch(function(err){
       console.log(err.message);
     });
+    document.getElementById('team1placeholder').innerHTML=team1Name;
+    document.getElementById('team2placeholder').innerHTML=team2Name;
   //});
   },
 
@@ -107,6 +110,8 @@ window.App = {
   MakeBet: function() { //function to make the bet on the smart contract
 
     console.log("debut du paris");
+    document.getElementById('team1placeholder').innerHTML="A"+team1Name;
+    document.getElementById('team2placeholder').innerHTML="a afa"+team2Name;
     var CreateBetInstance;
     var radios = document.getElementsByName('teamWinner');
     for (var i = 0, length = radios.length; i < length; i++)
@@ -117,7 +122,6 @@ window.App = {
       team=i+1;
 
       // only one radio can be logically checked, don't check the rest
-      break;
      }
     }
 
