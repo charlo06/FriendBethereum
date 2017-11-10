@@ -6,9 +6,6 @@ contract FriendBet{
     uint _endTimeBet;
     uint _endMatch;
     uint _balance;
-    uint _team1Bet;
-    uint _team2Bet;
-    uint _team3Bet;
     uint _winner;
     uint _prizeBet;
 
@@ -40,14 +37,10 @@ contract FriendBet{
     }
 
 
-<<<<<<< HEAD
-    function createBet(uint valueBet, uint endMatch, uint endTimeBet, uint team) public {
-=======
-    function FriendBet(uint valueBet, uint endMatch, uint endTimeBet, uint team) public {
->>>>>>> eb49909ad4d8ee16811d2071ed5ab88fda88f3d3
-        _valueBet = valueBet;
-        _endTimeBet = endTimeBet;
-        _endMatch = endMatch;
+    function FriendBet() public {
+        _valueBet = 0;
+        _endTimeBet = 0;
+        _endMatch = 0;
         _creator = msg.sender;
         _balance = 0;
         numberOfBetForTeam[3] = 0; //if bet on draw
@@ -55,8 +48,13 @@ contract FriendBet{
         numberOfBetForTeam[2] = 0;
         _winner = 0;
         _prizeBet = 0;
+    }
 
-        betTeam(team);
+    function createBet( uint valueBet, uint endMatch, uint endTimeBet){
+              _creator = msg.sender;
+              _valueBet = valueBet;
+              _endMatch = endMatch;
+              _endTimeBet = endTimeBet;
     }
 
     function betTeam(uint team) notPlayedYet() {
@@ -68,11 +66,11 @@ contract FriendBet{
       return(numberOfBetForTeam[team]);
     }
 
-    function getwinnerBet(uint winner) isOwner(){
+    function getwinnerBet(uint winner) isOwner()  endOfMatch(){
       _winner = winner;
       _prizeBet = _valueBet*(numberOfBetForTeam[3]+ numberOfBetForTeam[1]+ numberOfBetForTeam [2])/ numberOfBetForTeam[winner];
     }
-    function getmoneybet(){
+    function getmoneybet()  endOfMatch(){
       playerChoice[msg.sender] = 3; //avoid withdraw more than once
       msg.sender.transfer(_prizeBet);
     }

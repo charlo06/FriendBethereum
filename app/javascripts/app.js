@@ -62,7 +62,7 @@ window.App = {
     FriendBet.deployed().then(function(instance){
       CreateBetInstance = instance;
 
-      return CreateBetInstance.createBet(valueBet,endMatch,endTimeBet,team);
+      return CreateBetInstance.createBet(valueBet,endMatch,endTimeBet, {from: account});
     }).then(function(result){
       return console.log("esseye test 1 2");
     }).catch(function(err){
