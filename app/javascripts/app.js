@@ -17,6 +17,12 @@ window.FriendBet = FriendBet;
 // For application bootstrapping, check out window.addEventListener below.
 var accounts;
 var account;
+var endMatch;
+var endTimeBet;
+var team;
+var valueBet;
+var team1Name;
+var team2Name;
 
 window.App = {
   start: function() {
@@ -45,26 +51,15 @@ window.App = {
   createBet: function() {
 
     var CreateBetInstance;
-    var valueBet = document.getElementById('price').value;
+    valueBet = document.getElementById('price').value;
 
     console.log('valueBet : ' +valueBet);
-    var endMatch;
-    var endTimeBet;
-    var team;
 
-    var radios = document.getElementsByName('teamWinner');
 
-    for (var i = 0, length = radios.length; i < length; i++)
-    {
-     if (radios[i].checked)
-     {
-      // do whatever you want with the checked radio
-      team=i+1;
 
-      // only one radio can be logically checked, don't check the rest
-      break;
-     }
-    }
+    var team1Name = document.getElementById('team1').value;
+    var team2Name = document.getElementById('team2').value;
+
 
     var date = document.getElementById("finDuPari").value;
     var time = document.getElementById("finTime").value;
@@ -113,13 +108,21 @@ window.App = {
   MakeBet: function() { //function to make the bet on the smart contract
 
     console.log("debut du paris");
-    var team = 1;
-
     var CreateBetInstance;
+    var radios = document.getElementsByName('teamWinner');
+    for (var i = 0, length = radios.length; i < length; i++)
+    {
+     if (radios[i].checked)
+     {
+      // do whatever you want with the checked radio
+      team=i+1;
 
+      // only one radio can be logically checked, don't check the rest
+      break;
+     }
+    }
 
     console.log("paris pour la team " + team);
-
     FriendBet.deployed().then(function(instance){
       CreateBetInstance = instance;
 
