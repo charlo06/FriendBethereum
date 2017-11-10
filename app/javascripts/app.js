@@ -23,10 +23,6 @@ var team;
 var valueBet;
 var team1Name;
 var team2Name;
-var step;
-if(step==1){
-  App.displayJoinBet;
-}
 
 window.App = {
   start: function() {
@@ -50,7 +46,6 @@ window.App = {
       accounts = accs;
       account = accounts[0];
     });
-    step=0;
 
   },
 
@@ -84,7 +79,6 @@ window.App = {
       return CreateBetInstance.createBet(valueBet,endMatch,endTimeBet, {from: account});
     }).then(function(result){
       return console.log("esseye test 1 2");
-      step=1;
     }).catch(function(err){
       console.log(err.message);
     });
