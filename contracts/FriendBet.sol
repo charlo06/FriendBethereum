@@ -52,7 +52,6 @@ contract FriendBet{
         _valueBet = 0;
         _endTimeBet = 0;
         _endMatch = 0;
-        _creator = msg.sender;
         _balance = 0;
         numberOfBetForTeam[3] = 0; //if bet on draw
         numberOfBetForTeam[1] = 0;
@@ -70,7 +69,7 @@ contract FriendBet{
               _betCreated = 1;
     }
 
-    function betTeam(uint team) notPlayedYet(){
+    function betTeam(uint team) notPlayedYet() canStillBet(){
         playerChoice[msg.sender] = team;
         _balance += _valueBet;
         numberOfBetForTeam[team] += 1;
@@ -81,7 +80,7 @@ contract FriendBet{
       _prizeBet = _valueBet*(numberOfBetForTeam[3]+ numberOfBetForTeam[1]+ numberOfBetForTeam [2])/ numberOfBetForTeam[winner];
     }
     function getmoneybet()  endOfMatch() iswinner(){
-      playerChoice[msg.sender] = 3; //avoid withdraw more than once
+      playerChoice[msg.sender] = 4; //avoid withdraw more than once
       msg.sender.transfer(_prizeBet);
     }
 
