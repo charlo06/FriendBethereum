@@ -1,7 +1,4 @@
 body {
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 10%;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -10,7 +7,7 @@ label {
   /*width: 100px;*/
 }
 
-input {
+input[type="text"], input[type="number"], input[type="date"], input[type="time"]{
   width: 100%;
   /*padding: 5px;
   font-size: 16px;*/
@@ -39,14 +36,6 @@ h3 {
   font-size: 24px;
 }
 
-.black {
-  color: black;
-}
-
-#balance {
-  color: black;
-}
-
-.hint {
-  color: #666;
+.row {
+  margin: 25px 0;
 }
