@@ -17,5 +17,5 @@ Prerequisites : Have `npm` installed on your computer. For more information, ple
 ## Contributors
 
 Julien Aflalo
-Charles-Elie Aubadiat
+Charlélie Obadia
 Aurelien Barthe-Laperygne
