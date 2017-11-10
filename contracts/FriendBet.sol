@@ -37,10 +37,21 @@ contract FriendBet{
     }
 
 
+<<<<<<< HEAD
     function FriendBet() public {
         _valueBet = 0;
         _endTimeBet = 0;
         _endMatch = 0;
+=======
+/*<<<<<<< HEAD*/
+    /*function createBet(uint valueBet, uint endMatch, uint endTimeBet, uint team) public {*/
+/*=======*/
+    function FriendBet(uint valueBet, uint endMatch, uint endTimeBet, uint team) public {
+/*>>>>>>> eb49909ad4d8ee16811d2071ed5ab88fda88f3d3*/
+        _valueBet = valueBet;
+        _endTimeBet = endTimeBet;
+        _endMatch = endMatch;
+>>>>>>> 4fec42ac9c017f86ba1bd3b4997ff97fd7ae4cf3
         _creator = msg.sender;
         _balance = 0;
         numberOfBetForTeam[3] = 0; //if bet on draw
