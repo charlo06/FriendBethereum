@@ -23,6 +23,10 @@ var team;
 var valueBet;
 var team1Name;
 var team2Name;
+var step;
+if(step==1){
+  App.displayJoinBet;
+}
 
 window.App = {
   start: function() {
@@ -46,6 +50,8 @@ window.App = {
       accounts = accs;
       account = accounts[0];
     });
+    step=0;
+
   },
 
   createBet: function() {
@@ -59,8 +65,6 @@ window.App = {
 
     var team1Name = document.getElementById('team1').value;
     var team2Name = document.getElementById('team2').value;
-
-
     var date = document.getElementById("finDuPari").value;
     var time = document.getElementById("finTime").value;
     var dateJs = new Date(date + " " + time);
@@ -80,6 +84,7 @@ window.App = {
       return CreateBetInstance.createBet(valueBet,endMatch,endTimeBet, {from: account});
     }).then(function(result){
       return console.log("esseye test 1 2");
+      step=1;
     }).catch(function(err){
       console.log(err.message);
     });
